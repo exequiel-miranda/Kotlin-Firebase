@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "752198736857",
+    "project_id": "desafiopracticaii",
+    "storage_bucket": "desafiopracticaii.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752198736857:android:d819e805b19349791417c8",
+        "android_client_info": {
+          "package_name": "HR152213.desafiopracticoii"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw5cDx1XiLfZDUbQ_OyhblV7JFp6DSn4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
