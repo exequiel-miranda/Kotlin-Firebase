@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_tickets">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="393dp"
+        android:layout_height="694dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Agregar Ticket"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtNumeroTicketLayout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginTop="16dp"
+                android:hint="Numero del ticket">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNumeroTicket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtTituloTicket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Titulo del ticket">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtTituloTicket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtDescripcionTicket"
+                android:layout_width="match_parent"
+                android:layout_height="73dp"
+                android:layout_marginTop="8dp"
+                android:hint="Descripción del ticket">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDescripcionTicket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtDepartamentoUsuarioLayout"
+                android:layout_width="match_parent"
+                android:layout_height="73dp"
+                android:hint="Departamento del usuario">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDepartamentoUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtAutorTicket"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:hint="Autor del ticket">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtAutorTicket"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtEmailAutor"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:hint="Email de contacto del autor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtEmailAutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtFechaCreacionTicket"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:hint="Fecha de creación del ticket">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtFechaCreacionTicket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtEstadoTicket"
+                android:layout_width="match_parent"
+                android:layout_height="71dp"
+                android:hint="Estado del ticket">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtEstadoTicket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtFechaFinalizacionTicket"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:hint="Fecha de finalización del ticket">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtFechaFinalizacionTicket"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="387dp"
+        android:layout_height="66dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnGuardarTicket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#212A43"
+            android:text="Guardar ticket"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnVerListadoTickets"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnVerListadoTickets"
+            android:layout_width="188dp"
+            android:layout_height="49dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#212A43"
+            android:text="Ver listado de tickets"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.277" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

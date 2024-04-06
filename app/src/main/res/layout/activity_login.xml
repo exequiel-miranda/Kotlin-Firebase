@@ -5,19 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity_login">
 
-    <Button
-        android:id="@+id/btnRegistrarse"
-        android:layout_width="223dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="364dp"
-        android:backgroundTint="#212A43"
-        android:text="Registrarme"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtCorreoElectronicoLayout"
@@ -31,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtCorreoElectronico"
+            android:id="@+id/txtCorreoLogin"
             android:layout_width="match_parent"
 
             android:layout_height="wrap_content" />
@@ -46,41 +36,44 @@
         android:layout_marginTop="228dp"
         android:hint="Contraseña"
         app:endIconMode="password_toggle"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegistrarse"
+        app:layout_constraintBottom_toTopOf="@+id/btnIniciarSesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtContrasena"
+            android:id="@+id/txtContrasenaLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:text="¿Ya tienes cuenta?"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
-
     <Button
-        android:id="@+id/btnInicioSesion"
-        android:layout_width="233dp"
-        android:layout_height="59dp"
+        android:id="@+id/btnIniciarSesion"
+        android:layout_width="224dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="372dp"
         android:backgroundTint="#212A43"
         android:text="Iniciar sesión"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgAtras"
+        android:layout_width="58dp"
+        android:layout_height="62dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtCorreoElectronicoLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.379"
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
