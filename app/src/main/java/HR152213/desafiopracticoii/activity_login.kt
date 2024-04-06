@@ -15,13 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 class activity_login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_login)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         val txtCorreoElectronico = findViewById<EditText>(R.id.txtCorreoLogin)
         val txtContrasena = findViewById<EditText>(R.id.txtContrasenaLogin)
@@ -36,8 +30,8 @@ class activity_login : AppCompatActivity() {
         btnIniciarSesion.setOnClickListener {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(txtCorreoElectronico.text.toString(), txtContrasena.text.toString()).addOnCompleteListener {
                 if(it.isSuccessful){
-                    val activity_tickets = Intent(this, activity_tickets::class.java)
-                    startActivity(activity_tickets)
+                    val activity_menu = Intent(this, activity_menu::class.java)
+                    startActivity(activity_menu)
                 }else{
                     Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
                 }

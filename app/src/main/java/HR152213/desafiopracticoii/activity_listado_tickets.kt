@@ -1,8 +1,10 @@
 package HR152213.desafiopracticoii
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.Toast
@@ -19,15 +21,16 @@ import com.google.firebase.database.ValueEventListener
 class activity_listado_tickets : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_listado_tickets)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
 
         val lsTickets = findViewById<ListView>(R.id.lsTickets)
+        val imgAtrasListado = findViewById<ImageView>(R.id.imgAtrasListado)
+
+        imgAtrasListado.setOnClickListener {
+            val activity_menu = Intent(this, activity_menu::class.java)
+            startActivity(activity_menu)
+        }
 
         val database = FirebaseDatabase.getInstance()
         val referencia = database.getReference("Tickets")
@@ -46,8 +49,15 @@ class activity_listado_tickets : AppCompatActivity() {
                         key = dataSnapshot.key
                         val NumeroTicket = dataSnapshot.child("numeroTicket").value
                         val TituloTicket = dataSnapshot.child("tituloTicket").value
+                        val DescripcionTicket = dataSnapshot.child("descripcionTicket").value
+                        val DepartamentoUsuario = dataSnapshot.child("departamentoUsuario").value
+                        val autorTicket = dataSnapshot.child("autorTicket").value
+                        val emailTicket = dataSnapshot.child("emailTicket").value
+                        val fechaCreacionTicket = dataSnapshot.child("fechaCreacionTicket").value
+                        val estadoTicket = dataSnapshot.child("estadoTicket").value
+                        val fechaFinalizacionTicket = dataSnapshot.child("fechaFinalizacionTicket").value
 
-                        val ticket = "#$NumeroTicket, $TituloTicket"
+                        val ticket = "#$NumeroTicket, $TituloTicket, $DescripcionTicket, $DepartamentoUsuario, $autorTicket, $emailTicket, $fechaCreacionTicket, $estadoTicket, $fechaFinalizacionTicket"
                         datos.add(ticket)
                     }
                     miAdaptador.notifyDataSetChanged()
@@ -62,7 +72,7 @@ class activity_listado_tickets : AppCompatActivity() {
 
         lsTickets.setOnItemClickListener { adapterView, view, position, id ->
 
-            val dato = datos[position]
+            val datoSeleccionado = datos[position]
 
             fun eliminarDato(position: Int){
                 referencia.child(key!!).removeValue()
@@ -74,22 +84,34 @@ class activity_listado_tickets : AppCompatActivity() {
 
                 val numeroTicket = EditText(this)
                 numeroTicket.hint = "Numero del Ticket"
+                val datosTicket = dato.split(", ")
+                numeroTicket.setText(datosTicket[0].substring(1))
+
+
                 val tituloTicket = EditText(this)
-                tituloTicket.hint = "Titulo del Ticket"
+                tituloTicket.setText(datosTicket[1])
+
                 val DescripcionTicket = EditText(this)
-                DescripcionTicket.hint = "Descripción del Ticket"
+                DescripcionTicket.setText(datosTicket[2])
+
                 val DepartamentoUsuario = EditText(this)
-                DepartamentoUsuario.hint = "Departamento del Usuario"
+                DepartamentoUsuario.setText(datosTicket[3])
+
+
                 val AutorTicket = EditText(this)
-                AutorTicket.hint = "Autor del ticket"
+                AutorTicket.setText(datosTicket[4])
+
                 val EmailAutor = EditText(this)
-                EmailAutor.hint = "Email del autor"
+               // EmailAutor.setText(datosTicket[5])
+
                 val FechaCreacion = EditText(this)
-                FechaCreacion.hint = "Fecha de creación"
+             //   FechaCreacion.setText(datosTicket[6])
+
                 val EstadoTicket = EditText(this)
-                EstadoTicket.hint = "Estado del ticket"
+             //   EstadoTicket.setText(datosTicket[7])
+
                 val FechaFinalizacion = EditText(this)
-                FechaFinalizacion.hint = "Fecha de finalización"
+               // FechaFinalizacion.setText(datosTicket[8])
 
 
                 //Agrego los EditText a la alerta
@@ -120,12 +142,10 @@ class activity_listado_tickets : AppCompatActivity() {
                     val nuevoEstadoTicket = EstadoTicket.text.toString()
                     val nuevaFechaFinalizacion = FechaFinalizacion.text.toString()
 
-
-
-
                     //Actualizar dato en la base de datos
-                    val DatosDelTicket = DatosDelTicket(nuevoNumeroTicket, nuevoTituloTicket, nuevaDescripcionTicket, nuevoDepartamentoUsuario, nuevoAutorTicket, nuevoEmailAutor,nuevaFechaCreacion, nuevoEstadoTicket, nuevaFechaFinalizacion)
-                    referencia.child(key!!).setValue(DatosDelTicket)
+                    val objDatosDelTicket = DatosDelTicket(nuevoNumeroTicket, nuevoTituloTicket, nuevaDescripcionTicket, nuevoDepartamentoUsuario, nuevoAutorTicket, nuevoEmailAutor,nuevaFechaCreacion, nuevoEstadoTicket, nuevaFechaFinalizacion)
+                    referencia.child(key!!).setValue(objDatosDelTicket)
+
                 }
                 builder.setNegativeButton("Cancelar", null)
 
@@ -135,14 +155,15 @@ class activity_listado_tickets : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Elige una opcion")
             builder.setItems(arrayOf("Eliminar", "Actualizar")){ dialog, which ->
+
+
                 when(which){
+
                     0 -> eliminarDato(position)
-                    1 -> actualizarDato(dato)
+                    1 -> actualizarDato(datoSeleccionado)
                 }
             }
-
             builder.show()
         }
-
     }
 }
