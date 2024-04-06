@@ -28,12 +28,20 @@ class activity_login : AppCompatActivity() {
         }
 
         btnIniciarSesion.setOnClickListener {
-            FirebaseAuth.getInstance().signInWithEmailAndPassword(txtCorreoElectronico.text.toString(), txtContrasena.text.toString()).addOnCompleteListener {
-                if(it.isSuccessful){
-                    val activity_menu = Intent(this, activity_menu::class.java)
-                    startActivity(activity_menu)
-                }else{
-                    Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
+
+            if(txtCorreoElectronico.text.isEmpty() || txtContrasena.text.isEmpty()){
+                Toast.makeText(this, "Debe llenar todos los campos", Toast.LENGTH_LONG).show()
+            }else {
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                    txtCorreoElectronico.text.toString(),
+                    txtContrasena.text.toString()
+                ).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        val activity_menu = Intent(this, activity_menu::class.java)
+                        startActivity(activity_menu)
+                    } else {
+                        Toast.makeText(this, "Error al iniciar sesion", Toast.LENGTH_LONG).show()
+                    }
                 }
             }
         }

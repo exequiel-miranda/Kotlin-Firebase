@@ -11,6 +11,8 @@ import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.FirebaseDatabase
 
 class activity_tickets : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tickets)
@@ -31,8 +33,7 @@ class activity_tickets : AppCompatActivity() {
         val txtEmail = findViewById<EditText>(R.id.txtEmailAutor)
         val txtEmailLayout = findViewById<TextInputLayout>(R.id.txtEmailAutorLayout)
         val txtFechaCreacion = findViewById<EditText>(R.id.txtFechaCreacionTicket)
-        val txtFechaCreacionLayout =
-            findViewById<TextInputLayout>(R.id.txtFechaCreacionTicketLayout)
+        val txtFechaCreacionLayout = findViewById<TextInputLayout>(R.id.txtFechaCreacionTicketLayout)
         val txtEstado = findViewById<EditText>(R.id.txtEstadoTicket)
         val txtEstadoLayout = findViewById<TextInputLayout>(R.id.txtEstadoTicketLayout)
         val txtFechaFinalizacion = findViewById<EditText>(R.id.txtFechaFinalizacionTicket)
@@ -42,7 +43,7 @@ class activity_tickets : AppCompatActivity() {
 
         btnGuardarTicket.setOnClickListener {
 
-            if(txtNumero.text.isEmpty() || txtTitulo.text.isEmpty() || txtDescripcion.text.isEmpty() || txtDepartamento.text.isEmpty() || txtAutor.text.isEmpty() || txtEmail.text.isEmpty() || txtFechaCreacion.text.isEmpty() || txtEstado.text.isEmpty()) {
+            if (txtNumero.text.isEmpty() || txtTitulo.text.isEmpty() || txtDescripcion.text.isEmpty() || txtDepartamento.text.isEmpty() || txtAutor.text.isEmpty() || txtEmail.text.isEmpty() || txtFechaCreacion.text.isEmpty() || txtEstado.text.isEmpty()) {
                 when {
                     txtNumero.text.isEmpty() -> {
                         txtNumeroLayout.isErrorEnabled = true
@@ -84,7 +85,7 @@ class activity_tickets : AppCompatActivity() {
                         txtEstadoLayout.error = "El estado es obligatorio"
                     }
                 }
-            }else{
+            } else {
                 txtNumeroLayout.isErrorEnabled = false
                 txtTituloLayout.isErrorEnabled = false
                 txtDescripcionLayout.isErrorEnabled = false
@@ -131,6 +132,7 @@ class activity_tickets : AppCompatActivity() {
             val activity_menu = Intent(this, activity_menu::class.java)
             startActivity(activity_menu)
         }
+
     }
 
     fun limpiar(vararg textFields: EditText) {
@@ -139,6 +141,4 @@ class activity_tickets : AppCompatActivity() {
             textField.clearFocus()
         }
     }
-
-
 }

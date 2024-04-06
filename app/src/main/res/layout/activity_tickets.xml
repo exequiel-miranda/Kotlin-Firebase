@@ -126,12 +126,16 @@
                 android:layout_height="72dp"
                 android:hint="Fecha de creación del ticket">
 
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtFechaCreacionTicket"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
+                    android:layout_height="wrap_content"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
+
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtEstadoTicketLayout"

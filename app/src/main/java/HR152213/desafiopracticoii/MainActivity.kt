@@ -27,13 +27,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnRegistrarse.setOnClickListener {
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(txtCorreoElectronico.text.toString(), txtContrasena.text.toString()).addOnCompleteListener {
-                if(it.isSuccessful){
-                    Toast.makeText(this, "Usuario registrado", Toast.LENGTH_LONG).show()
+
+                if(txtCorreoElectronico.text.isEmpty() || txtContrasena.text.isEmpty()){
+                    Toast.makeText(this, "Debe llenar todos los campos", Toast.LENGTH_LONG).show()
                 }else{
-                    Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(txtCorreoElectronico.text.toString(), txtContrasena.text.toString()).addOnCompleteListener {
+                        if(it.isSuccessful){
+                            Toast.makeText(this, "Usuario registrado", Toast.LENGTH_LONG).show()
+                        }else{
+                            Toast.makeText(this, "Error al registrar", Toast.LENGTH_LONG).show()
+                        }
+                    }
                 }
-            }
         }
     }
 }
