@@ -12,7 +12,8 @@
         android:layout_width="393dp"
         android:layout_height="694dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,7 +43,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtTituloTicket"
+                android:id="@+id/txtTituloTicketLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -55,7 +56,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtDescripcionTicket"
+                android:id="@+id/txtDescripcionTicketLayout"
                 android:layout_width="match_parent"
                 android:layout_height="73dp"
                 android:layout_marginTop="8dp"
@@ -81,7 +82,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtAutorTicket"
+                android:id="@+id/txtAutorTicketLayout"
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:hint="Autor del ticket">
@@ -94,7 +95,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtEmailAutor"
+                android:id="@+id/txtEmailAutorLayout"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:hint="Email de contacto del autor">
@@ -106,7 +107,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtFechaCreacionTicket"
+                android:id="@+id/txtFechaCreacionTicketLayout"
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:hint="Fecha de creación del ticket">
@@ -119,7 +120,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtEstadoTicket"
+                android:id="@+id/txtEstadoTicketLayout"
                 android:layout_width="match_parent"
                 android:layout_height="71dp"
                 android:hint="Estado del ticket">
@@ -132,7 +133,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtFechaFinalizacionTicket"
+                android:id="@+id/txtFechaFinalizacionTicketLayout"
                 android:layout_width="match_parent"
                 android:layout_height="76dp"
                 android:hint="Fecha de finalización del ticket">

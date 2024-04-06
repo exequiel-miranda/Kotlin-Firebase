@@ -1,7 +1,7 @@
 package HR152213.desafiopracticoii
 
 data class DatosDelTicket(
-    val numeroTicket: Int,
+    val numeroTicket: String,
     val tituloTicket: String,
     val descripcionTicket: String,
     val departamentoUsuario: String,

@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.database.ktx)
     testImplementation(libs.junit)
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     androidTestImplementation(libs.androidx.junit)
