@@ -48,41 +48,97 @@ class activity_tickets : AppCompatActivity() {
                     txtNumero.text.isEmpty() -> {
                         txtNumeroLayout.isErrorEnabled = true
                         txtNumeroLayout.error = "El numero es obligatorio"
+                        txtTituloLayout.isErrorEnabled = false
+                        txtDescripcionLayout.isErrorEnabled = false
+                        txtDepartamentoLayout.isErrorEnabled = false
+                        txtAutorLayout.isErrorEnabled = false
+                        txtEmailLayout.isErrorEnabled = false
+                        txtFechaCreacionLayout.isErrorEnabled = false
+                        txtEstadoLayout.isErrorEnabled = false
                     }
 
                     txtTitulo.text.isEmpty() -> {
                         txtTituloLayout.isErrorEnabled = true
                         txtTituloLayout.error = "El titulo es obligatorio"
+                        txtNumeroLayout.isErrorEnabled = false
+                        txtDescripcionLayout.isErrorEnabled = false
+                        txtDepartamentoLayout.isErrorEnabled = false
+                        txtAutorLayout.isErrorEnabled = false
+                        txtEmailLayout.isErrorEnabled = false
+                        txtFechaCreacionLayout.isErrorEnabled = false
+                        txtEstadoLayout.isErrorEnabled = false
                     }
 
                     txtDescripcion.text.isEmpty() -> {
                         txtDescripcionLayout.isErrorEnabled = true
                         txtDescripcionLayout.error = "La descripción es obligatoria"
+                        txtNumeroLayout.isErrorEnabled = false
+                        txtTituloLayout.isErrorEnabled = false
+                        txtDepartamentoLayout.isErrorEnabled = false
+                        txtAutorLayout.isErrorEnabled = false
+                        txtEmailLayout.isErrorEnabled = false
+                        txtFechaCreacionLayout.isErrorEnabled = false
+                        txtEstadoLayout.isErrorEnabled = false
                     }
 
                     txtDepartamento.text.isEmpty() -> {
                         txtDepartamentoLayout.isErrorEnabled = true
                         txtDepartamentoLayout.error = "El departamento es obligatorio"
+                        txtNumeroLayout.isErrorEnabled = false
+                        txtTituloLayout.isErrorEnabled = false
+                        txtDescripcionLayout.isErrorEnabled = false
+                        txtAutorLayout.isErrorEnabled = false
+                        txtEmailLayout.isErrorEnabled = false
+                        txtFechaCreacionLayout.isErrorEnabled = false
+                        txtEstadoLayout.isErrorEnabled = false
                     }
 
                     txtAutor.text.isEmpty() -> {
                         txtAutorLayout.isErrorEnabled = true
                         txtAutorLayout.error = "El autor es obligatorio"
+                        txtNumeroLayout.isErrorEnabled = false
+                        txtTituloLayout.isErrorEnabled = false
+                        txtDescripcionLayout.isErrorEnabled = false
+                        txtDepartamentoLayout.isErrorEnabled = false
+                        txtEmailLayout.isErrorEnabled = false
+                        txtFechaCreacionLayout.isErrorEnabled = false
+                        txtEstadoLayout.isErrorEnabled = false
                     }
 
                     txtEmail.text.isEmpty() -> {
                         txtEmailLayout.isErrorEnabled = true
                         txtEmailLayout.error = "El email del autor es obligatorio"
+                        txtNumeroLayout.isErrorEnabled = false
+                        txtTituloLayout.isErrorEnabled = false
+                        txtDescripcionLayout.isErrorEnabled = false
+                        txtDepartamentoLayout.isErrorEnabled = false
+                        txtAutorLayout.isErrorEnabled = false
+                        txtFechaCreacionLayout.isErrorEnabled = false
+                        txtEstadoLayout.isErrorEnabled = false
                     }
 
                     txtFechaCreacion.text.isEmpty() -> {
                         txtFechaCreacionLayout.isErrorEnabled = true
                         txtFechaCreacionLayout.error = "La fecha de creación es obligatoria"
+                        txtNumeroLayout.isErrorEnabled = false
+                        txtTituloLayout.isErrorEnabled = false
+                        txtDescripcionLayout.isErrorEnabled = false
+                        txtDepartamentoLayout.isErrorEnabled = false
+                        txtAutorLayout.isErrorEnabled = false
+                        txtEmailLayout.isErrorEnabled = false
+                        txtEstadoLayout.isErrorEnabled = false
                     }
 
                     txtEstado.text.isEmpty() -> {
                         txtEstadoLayout.isErrorEnabled = true
                         txtEstadoLayout.error = "El estado es obligatorio"
+                        txtNumeroLayout.isErrorEnabled = false
+                        txtTituloLayout.isErrorEnabled = false
+                        txtDescripcionLayout.isErrorEnabled = false
+                        txtDepartamentoLayout.isErrorEnabled = false
+                        txtAutorLayout.isErrorEnabled = false
+                        txtEmailLayout.isErrorEnabled = false
+                        txtFechaCreacionLayout.isErrorEnabled = false
                     }
                 }
             } else {
