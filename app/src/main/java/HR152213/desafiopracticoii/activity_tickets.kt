@@ -136,6 +136,7 @@ class activity_tickets : AppCompatActivity() {
     fun limpiar(vararg textFields: EditText) {
         for (textField in textFields) {
             textField.setText("")
+            textField.clearFocus()
         }
     }
 
