@@ -73,9 +73,35 @@ class activity_listado_tickets : AppCompatActivity() {
         lsTickets.setOnItemClickListener { adapterView, view, position, id ->
 
             val datoSeleccionado = datos[position]
+            val posicionDatoSeleccionado = position
 
             fun eliminarDato(position: Int){
-                referencia.child(key!!).removeValue()
+                val ticketSeleccionado = datos[position]
+                val datosTicket = ticketSeleccionado.split(", ")
+
+                val numeroTicket = datosTicket[0].substring(1)
+                val tituloTicket = datosTicket[1]
+
+                referencia.orderByChild("numeroTicket").equalTo(numeroTicket)
+                    .addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            for (dataSnapshot in snapshot.children) {
+                                if (dataSnapshot.child("tituloTicket").value == tituloTicket) {
+                                    dataSnapshot.ref.removeValue()
+                                        .addOnSuccessListener {
+                                            Toast.makeText(this@activity_listado_tickets, "Ticket eliminado correctamente", Toast.LENGTH_SHORT).show()
+                                        }
+                                        .addOnFailureListener { e ->
+                                            Toast.makeText(this@activity_listado_tickets, "Error al eliminar ticket: ${e.message}", Toast.LENGTH_SHORT).show()
+                                        }
+                                }
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            Toast.makeText(this@activity_listado_tickets, "Error al eliminar ticket", Toast.LENGTH_SHORT).show()
+                        }
+                    })
             }
 
             fun actualizarDato(dato: String){
@@ -102,16 +128,16 @@ class activity_listado_tickets : AppCompatActivity() {
                 AutorTicket.setText(datosTicket[4])
 
                 val EmailAutor = EditText(this)
-               // EmailAutor.setText(datosTicket[5])
+                EmailAutor.setText(datosTicket[5])
 
                 val FechaCreacion = EditText(this)
-             //   FechaCreacion.setText(datosTicket[6])
+                FechaCreacion.setText(datosTicket[6])
 
                 val EstadoTicket = EditText(this)
-             //   EstadoTicket.setText(datosTicket[7])
+                EstadoTicket.setText(datosTicket[7])
 
                 val FechaFinalizacion = EditText(this)
-               // FechaFinalizacion.setText(datosTicket[8])
+                FechaFinalizacion.setText(datosTicket[8])
 
 
                 //Agrego los EditText a la alerta
@@ -158,7 +184,6 @@ class activity_listado_tickets : AppCompatActivity() {
 
 
                 when(which){
-
                     0 -> eliminarDato(position)
                     1 -> actualizarDato(datoSeleccionado)
                 }
