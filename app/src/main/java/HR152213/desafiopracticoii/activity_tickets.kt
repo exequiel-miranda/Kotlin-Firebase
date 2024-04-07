@@ -2,9 +2,13 @@ package HR152213.desafiopracticoii
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
@@ -12,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase
 
 class activity_tickets : AppCompatActivity() {
 
-
+    var estadoSeleccionado: String? = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tickets)
@@ -34,16 +38,31 @@ class activity_tickets : AppCompatActivity() {
         val txtEmailLayout = findViewById<TextInputLayout>(R.id.txtEmailAutorLayout)
         val txtFechaCreacion = findViewById<EditText>(R.id.txtFechaCreacionTicket)
         val txtFechaCreacionLayout = findViewById<TextInputLayout>(R.id.txtFechaCreacionTicketLayout)
-        val txtEstado = findViewById<EditText>(R.id.txtEstadoTicket)
+        val txtEstado = findViewById<Spinner>(R.id.spinnerEstadoTicket)
         val txtEstadoLayout = findViewById<TextInputLayout>(R.id.txtEstadoTicketLayout)
         val txtFechaFinalizacion = findViewById<EditText>(R.id.txtFechaFinalizacionTicket)
         val btnGuardarTicket = findViewById<Button>(R.id.btnGuardarTicket)
         val btnListado = findViewById<Button>(R.id.btnVerListadoTickets)
         val imgAtrasTickets = findViewById<ImageView>(R.id.imgAtrasTickets)
 
+        //Spinner
+        val opcionesEstado = arrayOf("Activo", "Finalizado")
+        val adaptadorSpinner = ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionesEstado)
+        adaptadorSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        txtEstado.adapter = adaptadorSpinner
+        txtEstado.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                 estadoSeleccionado = parent?.getItemAtPosition(position).toString()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
+
         btnGuardarTicket.setOnClickListener {
 
-            if (txtNumero.text.isEmpty() || txtTitulo.text.isEmpty() || txtDescripcion.text.isEmpty() || txtDepartamento.text.isEmpty() || txtAutor.text.isEmpty() || txtEmail.text.isEmpty() || txtFechaCreacion.text.isEmpty() || txtEstado.text.isEmpty()) {
+            if (txtNumero.text.isEmpty() || txtTitulo.text.isEmpty() || txtDescripcion.text.isEmpty() || txtDepartamento.text.isEmpty() || txtAutor.text.isEmpty() || txtEmail.text.isEmpty() || txtFechaCreacion.text.isEmpty() ) {
                 when {
                     txtNumero.text.isEmpty() -> {
                         txtNumeroLayout.isErrorEnabled = true
@@ -129,17 +148,6 @@ class activity_tickets : AppCompatActivity() {
                         txtEstadoLayout.isErrorEnabled = false
                     }
 
-                    txtEstado.text.isEmpty() -> {
-                        txtEstadoLayout.isErrorEnabled = true
-                        txtEstadoLayout.error = "El estado es obligatorio"
-                        txtNumeroLayout.isErrorEnabled = false
-                        txtTituloLayout.isErrorEnabled = false
-                        txtDescripcionLayout.isErrorEnabled = false
-                        txtDepartamentoLayout.isErrorEnabled = false
-                        txtAutorLayout.isErrorEnabled = false
-                        txtEmailLayout.isErrorEnabled = false
-                        txtFechaCreacionLayout.isErrorEnabled = false
-                    }
                 }
             } else {
                 txtNumeroLayout.isErrorEnabled = false
@@ -159,7 +167,7 @@ class activity_tickets : AppCompatActivity() {
                     "${txtAutor.text}",
                     "${txtEmail.text}",
                     "${txtFechaCreacion.text}",
-                    "${txtEstado.text}",
+                    "$estadoSeleccionado",
                     "${txtFechaFinalizacion.text}"
                 )
                 referencia.push().setValue(ticketNuevo)
@@ -172,7 +180,6 @@ class activity_tickets : AppCompatActivity() {
                     txtAutor,
                     txtEmail,
                     txtFechaCreacion,
-                    txtEstado,
                     txtFechaFinalizacion
                 )
             }
